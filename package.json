@@ -18,13 +18,14 @@
   "license": "ISC",
   "author": "Pham Van Minh - BT",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.4"
   },
   "devDependencies": {
     "morgan": "^1.10.1",
