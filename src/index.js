@@ -32,9 +32,9 @@ app.set('views', path.join(__dirname, 'resources/views'));
 // Router
 route(app);
 
-                    app.listen(port, () => {
-                        console.log(`App listening on port ${port}`);
-                    });
+app.listen(port, () => {
+    console.log(`App listening on port ${port}`);
+});
 // npm init
 // npm install express
 // node index.js
