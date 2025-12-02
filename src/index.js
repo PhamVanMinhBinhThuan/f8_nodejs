@@ -8,7 +8,8 @@ const port = 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(express.urlencoded());
+// Middleware
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // HTTP logger
@@ -37,8 +38,10 @@ app.get("/search", (req, res) => {
 });
 
 app.post("/search", (req, res) => {
-  res.send("OK");
+  console.log(req.body);
+  res.send('');
 });
+
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
