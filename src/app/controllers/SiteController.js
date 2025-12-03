@@ -1,16 +1,16 @@
 const Course = require('../models/Courses');
+const { multipleMongooseToObject } = require('../../util/mongoose');
 
 class SiteController {
     // [GET] /
-    async index(req, res, next) {
-        try {
-            // Cách viết mới: Dùng await thay vì callback
-            const courses = await Course.find({});
-            res.json(courses);
-        } catch (err) {
-            // Báo lỗi nếu có
-            res.status(400).json({ error: 'ERROR!!!' });
-        }
+    index(req, res, next) {
+        Course.find({})
+            .then((courses) => {
+                res.render('home', {
+                    courses: multipleMongooseToObject(courses),
+                });
+            })
+            .catch(next);
     }
 
     // [GET] /search
