@@ -45,7 +45,7 @@ class CourseController {
     // [DELTE] /courses/:id
     destroy(req, res, next) {
         Course.deleteOne({ _id: req.params.id })
-            .then(() => res.redirect('back'))
+            .then(() => res.redirect('/me/stored/courses'))
             .catch(next);
     }
 }
