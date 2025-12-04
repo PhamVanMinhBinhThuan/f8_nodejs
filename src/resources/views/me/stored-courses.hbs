@@ -17,7 +17,7 @@
       
     </select>
 
-    <button class="btn btn-primary btn-sm check-all-submit-btn disabled">Apply</button>
+    <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>Apply</button>
   </div>
   </div>
 
@@ -100,7 +100,8 @@
   document.addEventListener('DOMContentLoaded', function() {
     var courseId;
     var deleteForm = document.forms['delete-course-form'];
-    var containerForm = document.forms['container-form'];
+    // var containerForm = document.forms['container-form'];
+    var containerForm = $('form[name="container-form"]');
     var btnDeleteCourse = document.getElementById('btn-delete-course');
     var checkboxAll = $('#checkbox-all');
     var courseItemCheckBox = $('input[name="courseIds[]"]');
@@ -131,23 +132,15 @@
       checkboxAll.prop('checked', isCheckedAll);
       renderCheckAllSubmitBtn();
     })
-
-    // Check all submit button clicked
-    checkAllSubmitBtn.on('submit', function (e) {
-      var isSubmitable = !$(this).hasClass('disabled');
-      if (!isSubmitable) {
-        e.preventDefault(); 
-      }
-    });
  
     // Re-render check all submit button
     // Khi 1 checkbox được check thì nút Apply không còn disabled nữa
     function renderCheckAllSubmitBtn() {
       var checkedCount = $('input[name="courseIds[]"]:checked').length;
       if (checkedCount > 0) {
-        checkAllSubmitBtn.removeClass('disabled');
+        checkAllSubmitBtn.attr('disabled', false);
       } else {
-        checkAllSubmitBtn.addClass('disabled');
+        checkAllSubmitBtn.attr('disabled', true);
       }
     }
   })
